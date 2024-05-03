@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropout Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .filters {
+            margin-bottom: 20px;
+        }
+
+        .filter {
+            margin-bottom: 10px;
+        }
+
+        .filter label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .select-container {
+            position: relative;
+            width: 100%;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+            appearance: none; /* Remove default arrow */
+            -moz-appearance: none; /* Firefox */
+            -webkit-appearance: none; /* Safari and Chrome */
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+
+        .arrow::before {
+            content: '\25BC'; /* Unicode for down arrow */
+            font-size: 18px;
+            color: #555;
+        }
+
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dropout Prediction</h1>
+        <div class="filters">
+            <div class="filter">
+                <label for="applicationMode">Application Mode:</label>
+                <div class="select-container">
+                    <select id="applicationMode">
+                        <option value="online">Online</option>
+                        <option value="offline">Offline</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <div class="filter">
+                <label for="maritalStatus">Marital Status:</label>
+                <div class="select-container">
+                    <select id="maritalStatus">
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                        <option value="divorced">Divorced</option>
+                        <option value="widowed">Widowed</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <div class="filter">
+                <label for="gender">Gender:</label>
+                <div class="select-container">
+                    <select id="gender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <div class="filter">
+                <label for="financialStatus">Financial Status:</label>
+                <div class="select-container">
+                    <select id="financialStatus">
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+            <div class="filter">
+                <label for="reason">Reason:</label>
+                <div class="select-container">
+                    <select id="reason">
+                        <option value="financial">Financial Issues</option>
+                        <option value="academic">Academic Struggles</option>
+                        <option value="personal">Personal Problems</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div class="arrow"></div>
+                </div>
+            </div>
+        </div>
+        <button class="submit-btn" onclick="submitForm()">Submit</button>
+    </div>
+    <script>
+        function submitForm() {
+    const applicationMode = document.getElementById('applicationMode').value;
+    const maritalStatus = document.getElementById('maritalStatus').value;
+    const gender = document.getElementById('gender').value;
+    const financialStatus = document.getElementById('financialStatus').value;
+    const reason = document.getElementById('reason').value;
+
+    // Constructing the query string
+    const queryString = `?applicationMode=${applicationMode}&maritalStatus=${maritalStatus}&gender=${gender}&financialStatus=${financialStatus}&reason=${reason}`;
+
+    // Redirecting to the result page with query string
+    window.location.href = `result.html${queryString}`;
+}
+    </script>
+</body>
+</html>
